@@ -11,6 +11,7 @@ RabbitVis Partner Hosted Embed: the browser SDK, the integration guide and refer
 | [`docs/partner-embed-integration.md`](docs/partner-embed-integration.md) | **对接文档（必读）**：整体流程、创建嵌入会话、SDK 挂载、回调验签与逐字段说明、对账、错误码、安全清单 |
 | [`sdk/`](sdk/) | `@rabbitvis/embed-sdk` 源码、构建产物（`sdk/dist`）与[用法说明](sdk/README.md) |
 | [`examples/partner-embed-demo/`](examples/partner-embed-demo/) | 完整可运行的合作方参考实现：验签、防重放、按 `operationId`/`eventId` 幂等、预占/实扣/退回、故障注入 |
+| [`examples/partner-embed-java/`](examples/partner-embed-java/) | Java（JDK 21，零依赖）合作方参考实现：页面挂载、创建嵌入会话、回调验签、预占/实扣/退回，可本机运行或用 Dockerfile 部署 |
 | [`examples/partner-embed-stub/`](examples/partner-embed-stub/) | 最小回调桩（不验签、开关 allow/deny），只用于最初打通链路 |
 
 ## 快速开始
@@ -34,7 +35,7 @@ const embed = await mountRabbitVisEmbed({
 })
 ```
 
-**3. 后端实现两个回调**：`POST <你们基址>/rabbitvis/billing/authorize`（确认是否允许）和 `POST <你们基址>/rabbitvis/billing/finalize`（结算）。验签规则与字段含义见对接文档第 4 节，参考实现见 `examples/partner-embed-demo/src/demo-server.mjs` 与 `src/billing-store.mjs`。
+**3. 后端实现两个回调**：`POST <你们基址>/rabbitvis/billing/authorize`（确认是否允许）和 `POST <你们基址>/rabbitvis/billing/finalize`（结算）。验签规则与字段含义见对接文档第 4 节，参考实现见 `examples/partner-embed-demo/src/demo-server.mjs` 与 `src/billing-store.mjs`（Node），或 `examples/partner-embed-java/PartnerServer.java`（Java）。
 
 ## 凭据与环境
 

@@ -662,6 +662,7 @@ Authorization: Bearer rvpk_<clientId>.<secret>
 | `examples/partner-embed-demo/`（本仓库） | **一个完整可运行的"合作方"示例**：登录、向 RabbitVis 要 embedUrl、用 SDK 挂载、实现 authorize/finalize 回调（含验签、防重放、按 operationId/eventId 幂等、预占/实扣/退回），还带故障注入用于联调。建议以它为蓝本 |
 | `examples/partner-embed-demo/src/demo-server.mjs` | 回调验签 `verifyBillingSignature` 与签名 `signBillingBody` 的原始实现 |
 | `examples/partner-embed-demo/src/billing-store.mjs` | 预占 / 结算 / 幂等的账务参考逻辑 |
+| `examples/partner-embed-java/` | Java（JDK 21，零依赖，单文件）版的合作方参考实现：创建嵌入会话、SDK 挂载、回调验签（与 4.2 的 Node 版逐步对应）、按 operationId/eventId 幂等、预占/实扣/退回；附 Dockerfile |
 | `examples/partner-embed-stub/` | 最小回调桩：**不验签**，AUTHORIZE 按页面开关返回 allow/deny，FINALIZE 只记日志并接收。只用于最初把链路打通，**不能**作为真实实现 |
 | `sdk/README.md`（本仓库） | SDK 用法与事件说明 |
 
